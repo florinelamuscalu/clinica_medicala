@@ -1,4 +1,4 @@
-![This is an image](./assets/ss_HomeScreen.png)
+<img src ='./assets/ss_HomeScreen.png)align'  width="50%" height="50%" align="bottom">
 
 # clinica_medicala
 
