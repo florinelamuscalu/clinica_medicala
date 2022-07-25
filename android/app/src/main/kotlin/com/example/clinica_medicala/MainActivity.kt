@@ -1,4 +1,4 @@
-package com.example.clinica_medicala
+package login.clinica.medicala
 
 import io.flutter.embedding.android.FlutterActivity
 
