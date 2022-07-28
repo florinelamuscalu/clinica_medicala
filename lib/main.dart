@@ -1,4 +1,4 @@
-import 'package:clinica_medicala/main_page.dart';
+import 'package:clinica_medicala/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 

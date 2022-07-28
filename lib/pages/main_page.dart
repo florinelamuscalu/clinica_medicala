@@ -1,6 +1,7 @@
-import 'package:clinica_medicala/login_page.dart';
+import 'package:clinica_medicala/auth/doctor/Dlogin_page.dart';
+import 'package:clinica_medicala/auth/patient/Plogin_page.dart';
 import 'package:flutter/material.dart';
-import './testbuton.dart';
+
 
 class MainPage extends StatefulWidget {
   const MainPage({ Key? key }) : super(key: key);
@@ -10,6 +11,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
+  //bool doctor = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,7 +48,10 @@ class _MainPageState extends State<MainPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const LogInPage()));
+                              builder: (context) => const DLogInPage()
+                              )
+                              );
+                              //doctor = true;
                     },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -83,7 +89,7 @@ class _MainPageState extends State<MainPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const LogInPage()));
+                              builder: (context) => const PLogInPage()));
                     },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,

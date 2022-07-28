@@ -1,12 +1,13 @@
+import 'package:clinica_medicala/auth/patient/Pauth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import './home_page.dart';
-import 'logIn.dart';
+import '../../pages/patient/Phome_page.dart';
 
 
 
-class LogInPage extends StatelessWidget {
-  const LogInPage({Key? key}) : super(key: key);
+
+class DLogInPage extends StatelessWidget {
+  const DLogInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class LogInPage extends StatelessWidget {
             return const HomePage();
           }
           else{
-            return const LogIn();
+            return const AuthPage();
           }
         }
       ),

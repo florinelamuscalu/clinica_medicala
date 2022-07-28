@@ -1,25 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Dforgot_password_page.dart';
 
 /*
 void main() async {
   runApp(const LogIn());
 }
 */
-class LogIn extends StatefulWidget {
-  const LogIn({Key? key}) : super(key: key);
+class DLogIn extends StatefulWidget {
+  final VoidCallback DshowRegisterPage;
+  const DLogIn({Key? key, required this.DshowRegisterPage}) : super(key: key);
 
   @override
-  State<LogIn> createState() => _LogIn();
+  State<DLogIn> createState() => _DLogIn();
 }
 
-class _LogIn extends State<LogIn> {
+class _DLogIn extends State<DLogIn> {
   // text controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  Future signIn() async {
+  Future DsignIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
@@ -116,12 +118,40 @@ class _LogIn extends State<LogIn> {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (contex) {
+                                    return const DForgotPasswordPage();
+                                  },
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              'Forget password?',
+                              style: TextStyle(
+                                color: Colors.pink,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
 
                     //  Sigin Button
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
                       child: GestureDetector(
-                        onTap: signIn,
+                        onTap: DsignIn,
                         child: Container(
                           padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
@@ -144,21 +174,24 @@ class _LogIn extends State<LogIn> {
                     // Not member? register now
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'Not a member?',
                           style: TextStyle(
                             //color: Colors.purple,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
-                          'Register now',
-                          style: TextStyle(
-                            color: Colors.pink,
-                            fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: widget.DshowRegisterPage,
+                          child: const Text(
+                            'Register now',
+                            style: TextStyle(
+                              color: Colors.pink,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        )
+                        ),
                       ],
                     )
                   ]),
