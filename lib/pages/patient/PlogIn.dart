@@ -22,9 +22,18 @@ class _PLogIn extends State<PLogIn> {
   final _passwordController = TextEditingController();
 
   Future PsignIn() async {
+    // loading circle
+    showDialog(
+        context: context,
+        builder: (contex) {
+          return const Center(child: CircularProgressIndicator());
+        });
+
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
+    // pop the loading circle
+    Navigator.of(context).pop();
   }
 
   @override
@@ -122,26 +131,30 @@ class _PLogIn extends State<PLogIn> {
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children:  [
+                        children: [
                           GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (contex){
-                            return const PForgotPasswordPage();
-                          },),);
-                        },
-                          child:  const Text(
-                            'Forget password?',
-                            style: TextStyle(
-                              color: Colors.pink,
-                              fontWeight: FontWeight.bold,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (contex) {
+                                    return const PForgotPasswordPage();
+                                  },
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              'Forget password?',
+                              style: TextStyle(
+                                color: Colors.pink,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 10),
-
 
                     //  Sigin Button
                     Padding(

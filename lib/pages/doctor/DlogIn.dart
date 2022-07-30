@@ -22,9 +22,18 @@ class _DLogIn extends State<DLogIn> {
   final _passwordController = TextEditingController();
 
   Future DsignIn() async {
+    // loading circle
+    showDialog(
+        context: context,
+        builder: (contex) {
+          return const Center(child: CircularProgressIndicator());
+        });
+
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
+    // pop the loading circle
+    Navigator.of(context).pop();
   }
 
   @override
