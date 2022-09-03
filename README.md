@@ -18,6 +18,17 @@
 <img src = 'assets/readme/ss6.png' whidth = 100 height = 300>
 <img src = 'assets/readme/ss7.png' whidth = 100 height = 300>
 </p>
+<br><br>
+
+<p>
+&ensp; Further I deploy navigation bar which contain: messages, appointments,recipe and medical history.
+</p>
+<br>
+<p float = "left">
+<img src = 'assets/readme/ss8.png' whidth = 100 height = 300>
+</p>
+
+
 
 
 

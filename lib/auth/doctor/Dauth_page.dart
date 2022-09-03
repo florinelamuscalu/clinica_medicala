@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../../pages/doctor/Dregister_page.dart';
 import '../../pages/doctor/DlogIn.dart';
 
-class AuthPage extends StatefulWidget {
-  const AuthPage({ Key? key }) : super(key: key);
+class DAuthPage extends StatefulWidget {
+  const DAuthPage({ Key? key }) : super(key: key);
 
   @override
-  State<AuthPage> createState() => _AuthPageState();
+  State<DAuthPage> createState() => _DAuthPageState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _DAuthPageState extends State<DAuthPage> {
 
   bool showLoginPage = true;
 

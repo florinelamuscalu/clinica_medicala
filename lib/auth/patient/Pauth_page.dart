@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../../pages/patient/Pregister_page.dart';
 import '../../pages/patient/PlogIn.dart';
 
-class AuthPage extends StatefulWidget {
-  const AuthPage({ Key? key }) : super(key: key);
+class PAuthPage extends StatefulWidget {
+  const PAuthPage({ Key? key }) : super(key: key);
 
   @override
-  State<AuthPage> createState() => _AuthPageState();
+  State<PAuthPage> createState() => _PAuthPageState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _PAuthPageState extends State<PAuthPage> {
 
   bool showLoginPage = true;
 

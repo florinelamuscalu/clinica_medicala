@@ -16,10 +16,10 @@ class PLogInPage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot){
           if (snapshot.hasData){
-            return const HomePage();
+            return const PHomePage();
           }
           else{
-            return const AuthPage();
+            return const PAuthPage();
           }
         }
       ),
