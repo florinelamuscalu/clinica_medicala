@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../../AllModels/poup_choices.dart';
+import 'setting.dart';
+import '../main_page.dart';
 
 class DHomePage extends StatefulWidget {
   const DHomePage({Key? key}) : super(key: key);
@@ -11,36 +14,89 @@ class DHomePage extends StatefulWidget {
 class _DHomePageState extends State<DHomePage> {
 
   int _selectedIndex = 0;
+  List<PopupChoices> choices = <PopupChoices>[
+    PopupChoices(title: 'Settings', icon: Icons.settings),
+    PopupChoices(title: 'Sign out', icon: Icons.exit_to_app),
+  ];
+
 
   final screen =[
-    Message(),
+    //Message(),
+    const Center(child: Text('0'),),
     const Center(child: Text('1'),),
     const Center(child: Text('2'),),
     const Center(child: Text('3'),),
   ];
 
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: Center(
-  //       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-  //         Text('signed in ' + user.email!),
-  //         MaterialButton(
-  //           onPressed: () {
-  //             FirebaseAuth.instance.signOut();
-  //           },
-  //           color: Colors.red[200],
-  //           child: const Text('sign out'),
-  //         )
-  //       ]),
-  //     ),
-  //   );
-  // }
+   void onItemMenuPress(PopupChoices choice) {
+    if (choice.title == "Sign out") {
+      //handleSingOut();
+      FirebaseAuth.instance.signOut();
+    } else {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => SettingsPage()));
+    }
+  }
+
+  Widget buildPopupMenu() {
+    return PopupMenuButton<PopupChoices>(
+        icon: const Icon(
+          Icons.more_vert,
+          color: Colors.grey,
+        ),
+        onSelected: onItemMenuPress,
+        itemBuilder: (BuildContext context) {
+          return choices.map((PopupChoices choice) {
+            return PopupMenuItem<PopupChoices>(
+              value: choice,
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    choice.icon,
+                    color: Color(0xff841742),
+                  ),
+                  Container(
+                    width: 10,
+                  ),
+                  Text(
+                    choice.title,
+                    style: const TextStyle(color: Color(0xff841742)),
+                  ),
+                ],
+              ),
+            );
+          }).toList();
+        });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: isWhite ? Colors.white : Colors.black,
+        appBar: AppBar(
+          backgroundColor: isWhite ? Colors.white : Colors.black,
+          leading: IconButton(
+            icon: Switch(
+              value: isWhite,
+              onChanged: (value) {
+                setState(() {
+                  isWhite = value;
+                  //print(isWhite);
+                });
+              },
+              activeTrackColor: Colors.grey,
+              activeColor: Colors.white,
+              inactiveTrackColor: Colors.grey,
+              inactiveThumbColor: Colors.black45,
+            ),
+            onPressed: () => '',
+          ),
+          actions: <Widget>[
+            buildPopupMenu(),
+          ],
+        ),
       body: screen[_selectedIndex],
       bottomNavigationBar: Container(
       decoration: const BoxDecoration(

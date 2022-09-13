@@ -3,8 +3,11 @@ import 'package:clinica_medicala/auth/patient/Plogin_page.dart';
 import 'package:flutter/material.dart';
 
 
+bool isWhite = false;
+
 class MainPage extends StatefulWidget {
   const MainPage({ Key? key }) : super(key: key);
+  
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -13,6 +16,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
 
   //bool doctor = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
